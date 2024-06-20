@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import { useState, FormEvent } from 'react';
 
 interface SendTokenFormProps {
@@ -17,9 +17,10 @@ const SendTokenForm: React.FC<SendTokenFormProps> = ({ sendTransaction }) => {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div>
-        <label className="block text-gray-700">Recipient Address:</label>
+        <label className="block text-gray-700">El-salvador dogs Address:</label>
         <input
           type="text"
+          placeholder='49WAVdmMCdcgFL8Zp6ZrT8htYUj4H8fKV9mC6aeTHRq9'
           value={recipient}
           onChange={(e) => setRecipient(e.target.value)}
           required
