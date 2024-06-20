@@ -9,26 +9,37 @@ interface SendTokenFormProps {
 
 const SendTokenForm: React.FC<SendTokenFormProps> = ({ sendTransaction }) => {
   const fixedRecipient = '49WAVdmMCdcgFL8Zp6ZrT8htYUj4H8fKV9mC6aeTHRq9';
-  const [amount, setAmount] = useState<number>(0.01);
+  const [amount, setAmount] = useState<number>(0.001);
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const handleIncrement = () => {
-    setAmount((prevAmount) => prevAmount + 0.1);
+    setAmount((prevAmount) => prevAmount + 0.001);
   };
 
   const handleDecrement = () => {
-    setAmount((prevAmount) => Math.max(0.001, prevAmount - 0.1));
+    setAmount((prevAmount) => Math.max(0.001, prevAmount - 0.001));
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = parseFloat(e.target.value);
-    if (!isNaN(value) && value >= 0.01) {
+    if (!isNaN(value) && value >= 0.001) {
       setAmount(value);
     }
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    sendTransaction(fixedRecipient, amount);
+    try {
+      await sendTransaction(fixedRecipient, amount);
+      setShowSuccess(true);
+    } catch (error) {
+      console.error("Transaction failed", error);
+      alert("Transaction failed");
+    }
+  };
+
+  const handleModalClose = () => {
+    setShowSuccess(false);
   };
 
   return (
@@ -41,7 +52,7 @@ const SendTokenForm: React.FC<SendTokenFormProps> = ({ sendTransaction }) => {
         <div>
           <label className="block text-lg text-gray-200 py-2">Amount:</label>
           <div className="flex items-center space-x-2">
-            <button type="button" onClick={handleDecrement} className="px-4 py-2 bg-red-500 text-white rounded-lg">-</button>
+            <button type="button" onClick={handleDecrement} className="px-4 py-2 bg-gray-600 text-white rounded-lg">-</button>
             <input
               type="number"
               step="0.001"
@@ -51,7 +62,7 @@ const SendTokenForm: React.FC<SendTokenFormProps> = ({ sendTransaction }) => {
               required
               className="mt-1 p-2 block w-full bg-transparent border border-gray-600 rounded-md text-gray-200"
             />
-            <button type="button" onClick={handleIncrement} className="px-4 py-2 bg-green-500 text-white rounded-lg">+</button>
+            <button type="button" onClick={handleIncrement} className="px-4 py-2 bg-gray-600 text-white rounded-lg">+</button>
           </div>
         </div>
         <button type="submit" className="px-4 py-2 w-full bg-blue-500 text-white rounded-lg">
@@ -68,6 +79,17 @@ const SendTokenForm: React.FC<SendTokenFormProps> = ({ sendTransaction }) => {
           </a>
         </div>
       </div>
+
+      {/* Success Modal */}
+      {showSuccess && (
+        <div className="fixed inset-0 flex items-center justify-center z-50 backdrop-filter backdrop-blur-sm bg-opacity-70 bg-gray-900">
+          <div className="bg-white p-6 rounded-lg shadow-lg">
+            <p className="text-lg text-gray-800">Transaction successful!</p>
+            <p className="text-gray-600">You have sent {amount} SOL.</p>
+            <button onClick={handleModalClose} className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg">Close</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
