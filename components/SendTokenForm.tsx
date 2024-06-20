@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import { useState, FormEvent } from 'react';
 import Image from 'next/image'; // Import Image from next/image
 import { FaTelegramPlane } from 'react-icons/fa';
