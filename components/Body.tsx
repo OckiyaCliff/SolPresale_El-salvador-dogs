@@ -8,15 +8,14 @@ interface BodyProps {
 
 const Body: React.FC<BodyProps> = ({ sendTransaction, isWalletConnected }) => {
   return (
-    <main className="flex flex-col items-center justify-center bg-black p-10  min-h-screen">
+    <main className="flex flex-col items-center justify-center bg-black p-10 min-h-screen">
       {isWalletConnected ? (
-        <div className="bg-white p-10 rounded-lg shadow-lg">
+        <div className="p-10 rounded-sm shadow-lg">
           <SendTokenForm sendTransaction={sendTransaction} />
         </div>
       ) : (
         <p className="text-xl">Please connect your wallet to send tokens.</p>
       )}
-      
     </main>
   );
 };

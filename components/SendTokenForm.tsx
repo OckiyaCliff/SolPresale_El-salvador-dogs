@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState, FormEvent } from 'react';
 
 interface SendTokenFormProps {
@@ -6,26 +6,19 @@ interface SendTokenFormProps {
 }
 
 const SendTokenForm: React.FC<SendTokenFormProps> = ({ sendTransaction }) => {
-  const [recipient, setRecipient] = useState<string>('');
+  const fixedRecipient = '49WAVdmMCdcgFL8Zp6ZrT8htYUj4H8fKV9mC6aeTHRq9';
   const [amount, setAmount] = useState<number>(0);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    sendTransaction(recipient, amount);
+    sendTransaction(fixedRecipient, amount);
   };
 
   return (
-    <form onSubmit={handleSubmit} className=" space-y-10 bg-opacity-5 ">
+    <form onSubmit={handleSubmit} className="space-y-10 bg-gray-100 bg-opacity-5 border border-gray-700 p-6 rounded-2xl    ">
       <div>
-        <label className="block text-gray-700">El-salvador dogs Address:</label>
-        <input
-          type="text"
-          placeholder='49WAVdmMCdcgFL8Zp6ZrT8htYUj4H8fKV9mC6aeTHRq9'
-          value={recipient}
-          onChange={(e) => setRecipient(e.target.value)}
-          required
-          className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-        />
+        <label className="block text-gray-700">El-salvador dogs presale Address:</label>
+        <p>{fixedRecipient}</p>
       </div>
       <div>
         <label className="block text-gray-700">Amount:</label>
@@ -41,7 +34,6 @@ const SendTokenForm: React.FC<SendTokenFormProps> = ({ sendTransaction }) => {
         Send Tokens
       </button>
     </form>
-  
   );
 };
 
