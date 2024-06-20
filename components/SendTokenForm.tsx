@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import { useState, FormEvent } from 'react';
 import Image from 'next/image'; // Import Image from next/image
 import { FaTelegramPlane } from 'react-icons/fa';
@@ -13,11 +13,11 @@ const SendTokenForm: React.FC<SendTokenFormProps> = ({ sendTransaction }) => {
   const [showSuccess, setShowSuccess] = useState(false);
 
   const handleIncrement = () => {
-    setAmount((prevAmount) => prevAmount + 0.001);
+    setAmount((prevAmount) => prevAmount + 0.05);
   };
 
   const handleDecrement = () => {
-    setAmount((prevAmount) => Math.max(0.001, prevAmount - 0.001));
+    setAmount((prevAmount) => Math.max(0.001, prevAmount - 0.05));
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,12 +47,12 @@ const SendTokenForm: React.FC<SendTokenFormProps> = ({ sendTransaction }) => {
       <form onSubmit={handleSubmit} className="space-y-6 bg-gray-100 bg-opacity-0 border border-gray-700 p-4 sm:p-6 rounded-lg">
         <div>
           <label className="block text-lg text-gray-200 py-2">El-salvador Dogs presale Address:</label>
-          <p className="text-gray-400 break-words">{fixedRecipient}</p>
+          {/* <p className="text-gray-400 break-words">{fixedRecipient}</p> */}
         </div>
         <div>
           <label className="block text-lg text-gray-200 py-2">Amount:</label>
           <div className="flex items-center space-x-2">
-            <button type="button" onClick={handleDecrement} className="px-4 py-2 bg-gray-600 text-white rounded-lg">-</button>
+            <button type="button" onClick={handleDecrement} className="px-4 py-2 bg-red-400 text-white rounded-lg">-</button>
             <input
               type="number"
               step="0.001"
@@ -62,7 +62,7 @@ const SendTokenForm: React.FC<SendTokenFormProps> = ({ sendTransaction }) => {
               required
               className="mt-1 p-2 block w-full bg-transparent border border-gray-600 rounded-md text-gray-200"
             />
-            <button type="button" onClick={handleIncrement} className="px-4 py-2 bg-gray-600 text-white rounded-lg">+</button>
+            <button type="button" onClick={handleIncrement} className="px-4 py-2 bg-green-400 text-white rounded-lg">+</button>
           </div>
         </div>
         <button type="submit" className="px-4 py-2 w-full bg-blue-500 text-white rounded-lg">
