@@ -15,7 +15,7 @@ const SendTokenForm: React.FC<SendTokenFormProps> = ({ sendTransaction }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} className=" space-y-10 bg-opacity-5 ">
       <div>
         <label className="block text-gray-700">El-salvador dogs Address:</label>
         <input
@@ -41,6 +41,7 @@ const SendTokenForm: React.FC<SendTokenFormProps> = ({ sendTransaction }) => {
         Send Tokens
       </button>
     </form>
+  
   );
 };
 
