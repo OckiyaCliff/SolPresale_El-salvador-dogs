@@ -86,7 +86,7 @@ const Home: FC = () => {
   return (
     <>
       <Head>
-        <title>El-Salvador Presale</title>
+        <title>El-Salvador Dogs Presale</title>
         <meta
           name="El-Salavdor Presale"
           content="This is El-Salavdor Presale site"
