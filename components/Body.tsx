@@ -8,17 +8,15 @@ interface BodyProps {
 
 const Body: React.FC<BodyProps> = ({ sendTransaction, isWalletConnected }) => {
   return (
-    <main className="flex flex-col items-center justify-center bg-black p-10 min-h-screen relative">
-      <div className="inset-0 circlePosition w-[300px] h-[200px] bg-[#c507ff] rounded-[100%] absolute z-1 top-[50%] left-[50%] translate-x-[-30%] translate-y-[-20%] blur-[170px]"></div>
+    <main className="flex flex-col items-center justify-center bg-black p-4 sm:p-10 min-h-screen relative">
+      <div className="inset-0 circlePosition w-[300px] h-[200px] bg-[#c507ff] rounded-full absolute z-0 top-[50%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 blur-[170px]"></div>
       {isWalletConnected ? (
-        <div className="relative p-10 rounded-sm shadow-lg z-10">
-          <div className="relative z-10 p-10">
-            <SendTokenForm sendTransaction={sendTransaction} />
-          </div>
+        <div className="relative p-6 sm:p-10 rounded-sm shadow-lg z-10  bg-opacity-75">
+          <SendTokenForm sendTransaction={sendTransaction} />
         </div>
       ) : (
-        <div className="relative p-10 rounded-sm shadow-lg z-10">
-          <p className="text-xl text-white">Please connect your wallet to send tokens.</p>
+        <div className="relative p-6 sm:p-10 rounded-sm shadow-lg z-10 bg-opacity-75">
+          <p className="text-xl text-white">Please connect your wallet to Buy.</p>
         </div>
       )}
     </main>
