@@ -24,7 +24,7 @@ export const Timer: React.FC<MyTimerProps> = ({ expiryTimestamp }) => {
   });
 
   return (
-    <div className="min-h-[600px] h-max md:h-[700px] flex-col justify-center items-center">
+    <div className="min-h-[300px] h-max md:h-[330px] flex-col justify-center items-center">
       <div className=" text-center font-[900] text-5xl text-white pb-16">Countdown TO El-salvador dogs PRESALE</div>
       <div className="flex  flex-col md:flex-row justify-center items-center">
         <div className="relative">

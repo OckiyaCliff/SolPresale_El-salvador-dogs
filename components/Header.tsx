@@ -5,7 +5,7 @@ import logo from "../public/assets/logo.jpg"
 
 const Header = () => {
   return (
-    <header className="flex justify-between items-center p-3  bg-black  text-white ">
+    <header className="flex justify-between items-center p-3  bg-black  text-white  w-full">
       <div className="flex items-center">
         <Image src={logo} alt="logo" className="rounded-full mr-1" width={25} height={25} />
         <h1 className="text-lg px-4  ">El-salvador Dogs</h1>
