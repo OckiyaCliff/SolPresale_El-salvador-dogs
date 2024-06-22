@@ -1,4 +1,5 @@
 "use client";
+import Head from "next/head";
 import { FC, useMemo, useEffect, useState } from "react";
 import {
   Connection,
@@ -12,9 +13,7 @@ import {
   WalletProvider,
   ConnectionProvider,
 } from "@solana/wallet-adapter-react";
-import {
-  WalletModalProvider
-} from "@solana/wallet-adapter-react-ui";
+import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
 import { PhantomWalletAdapter } from "@solana/wallet-adapter-wallets";
 import Header from "../components/Header";
 import Body from "../components/Body";
@@ -69,7 +68,7 @@ const App: FC = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen relative">
       <Header />
       {isClient && (
         <Body
@@ -85,13 +84,23 @@ const Home: FC = () => {
   const wallets = useMemo(() => [new PhantomWalletAdapter()], []);
 
   return (
-    <ConnectionProvider endpoint={network}>
-      <WalletProvider wallets={wallets} autoConnect>
-        <WalletModalProvider>
-          <App />
-        </WalletModalProvider>
-      </WalletProvider>
-    </ConnectionProvider>
+    <>
+      <Head>
+        <title>El-Salvador Dogs Presale</title>
+        <meta
+          name="El-Salavdor Presale"
+          content="This is El-Salavdor Presale site"
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <ConnectionProvider endpoint={network}>
+        <WalletProvider wallets={wallets} autoConnect>
+          <WalletModalProvider>
+            <App />
+          </WalletModalProvider>
+        </WalletProvider>
+      </ConnectionProvider>
+    </>
   );
 };
 
