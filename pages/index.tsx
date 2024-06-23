@@ -18,8 +18,8 @@ import { PhantomWalletAdapter } from "@solana/wallet-adapter-wallets";
 import Header from "../components/Header";
 import Body from "../components/Body";
 
-// Use the devnet endpoint
-const network = "https://api.devnet.solana.com";
+// Use the mainnet endpoint
+const network = "https://api.mainnet-beta.solana.com ";
 
 const App: FC = () => {
   const wallet = useWallet();
