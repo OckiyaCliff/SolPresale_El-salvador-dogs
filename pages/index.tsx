@@ -17,6 +17,7 @@ import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
 import { PhantomWalletAdapter } from "@solana/wallet-adapter-wallets";
 import { SolletWalletAdapter } from "@solana/wallet-adapter-sollet";
 import { SolflareWalletAdapter } from "@solana/wallet-adapter-solflare";
+import { MathWalletAdapter } from "@solana/wallet-adapter-mathwallet";
 import Header from "../components/Header";
 import Body from "../components/Body";
 
@@ -89,6 +90,7 @@ const Home: FC = () => {
       new PhantomWalletAdapter(),
       new SolletWalletAdapter(),
       new SolflareWalletAdapter(),
+      new MathWalletAdapter(),
     ],
     []
   );
