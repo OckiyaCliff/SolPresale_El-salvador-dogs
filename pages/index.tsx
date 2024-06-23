@@ -14,7 +14,7 @@ import {
   ConnectionProvider,
 } from "@solana/wallet-adapter-react";
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
-import { PhantomWalletAdapter } from "@solana/wallet-adapter-wallets";
+import { PhantomWalletAdapter, TrustWalletAdapter } from "@solana/wallet-adapter-wallets";
 import { SolletWalletAdapter } from "@solana/wallet-adapter-sollet";
 import { SolflareWalletAdapter } from "@solana/wallet-adapter-solflare";
 import { MathWalletAdapter } from "@solana/wallet-adapter-mathwallet";
@@ -91,6 +91,7 @@ const Home: FC = () => {
       new SolletWalletAdapter(),
       new SolflareWalletAdapter(),
       new MathWalletAdapter(),
+      new TrustWalletAdapter()
     ],
     []
   );
