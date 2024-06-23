@@ -41,7 +41,7 @@ const Body: React.FC<BodyProps> = ({ sendTransaction, isWalletConnected }) => {
   }, [connected, publicKey]);
 
   const now = moment();
-  const futureDate = moment("2024-12-31T23:59:59");
+  const futureDate = moment("2024-06-25T23:59:59");
   const duration = moment.duration(futureDate.diff(now));
   const expiryTimestamp = new Date(now.add(duration).toISOString());
 
