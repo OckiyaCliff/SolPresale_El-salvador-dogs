@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import Head from "next/head";
 import { FC, useMemo, useEffect, useState } from "react";
 import {
@@ -18,8 +18,8 @@ import { PhantomWalletAdapter } from "@solana/wallet-adapter-wallets";
 import Header from "../components/Header";
 import Body from "../components/Body";
 
-// Use the devnet endpoint
-const network = "https://api.devnet.solana.com";
+// Use the mainnet endpoint
+const network = "https://api.mainnet-beta.solana.com";
 
 const App: FC = () => {
   const wallet = useWallet();
@@ -88,8 +88,8 @@ const Home: FC = () => {
       <Head>
         <title>El-Salvador Dogs Presale</title>
         <meta
-          name="El-Salavdor Presale"
-          content="This is El-Salavdor Presale site"
+          name="El-Salvador Presale"
+          content="This is the El-Salvador Presale site"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
