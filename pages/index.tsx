@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Head from "next/head";
 import { FC, useMemo, useEffect, useState } from "react";
 import {
@@ -15,6 +15,8 @@ import {
 } from "@solana/wallet-adapter-react";
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
 import { PhantomWalletAdapter } from "@solana/wallet-adapter-wallets";
+import { SolletWalletAdapter } from "@solana/wallet-adapter-sollet";
+import { SolflareWalletAdapter } from "@solana/wallet-adapter-solflare";
 import Header from "../components/Header";
 import Body from "../components/Body";
 
@@ -82,7 +84,14 @@ const App: FC = () => {
 };
 
 const Home: FC = () => {
-  const wallets = useMemo(() => [new PhantomWalletAdapter()], []);
+  const wallets = useMemo(
+    () => [
+      new PhantomWalletAdapter(),
+      new SolletWalletAdapter(),
+      new SolflareWalletAdapter(),
+    ],
+    []
+  );
 
   return (
     <>
