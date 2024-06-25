@@ -20,7 +20,7 @@ import { SolflareWalletAdapter } from "@solana/wallet-adapter-solflare";
 import { MathWalletAdapter } from "@solana/wallet-adapter-mathwallet";
 import Header from "../components/Header";
 import Body from "../components/Body";
-import Footer from "../components/footer"; // Import the new Footer component
+import Footer from "../components/Footer"; // Import the new Footer component
 
 // Use the mainnet endpoint
 // const network = "https://api.mainnet-beta.solana.com ";
