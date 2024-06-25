@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useEffect, useState } from 'react';
 import moment from "moment";
 import SendTokenForm from "./SendTokenForm";
@@ -21,7 +21,6 @@ const WHITELISTED_WALLETS = [
   "EAy8LESX85CT1H2SDLu7U5JMJXMqr8TpPnJa369YwDyg",
   "9rq7xDuYWmGGCuenPhqHYHJXDg68SN94CBpwEBG4XzEP",
   "7DoaqRQByWiCqARVRUj5ePD6zqMGdSGuqZbs9uDs7Ukg",
-  "9kXajyZqMTD4RijveQSNTkito4GDKDVDk49vj3yFLUTV",
 ];
 
 const EXCLUSIVE_PERIOD_DAYS = 2;
@@ -52,7 +51,7 @@ const Body: React.FC<BodyProps> = ({ sendTransaction, isWalletConnected }) => {
     }
   }, [connected, publicKey]);
 
-  const targetDate = moment("2024-06-25T18:00:00+01:00"); // 25th June 2024, 6:00 PM WAT
+  const targetDate = moment("2024-06-25T20:00:00+01:00"); // 25th June 2024, 8:00 PM WAT
   const now = moment();
   const isCountdownEnded = now.isAfter(targetDate);
   const expiryTimestamp = new Date(targetDate.toISOString());
