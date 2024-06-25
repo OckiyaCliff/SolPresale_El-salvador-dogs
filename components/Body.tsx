@@ -21,6 +21,7 @@ const WHITELISTED_WALLETS = [
   "EAy8LESX85CT1H2SDLu7U5JMJXMqr8TpPnJa369YwDyg",
   "9rq7xDuYWmGGCuenPhqHYHJXDg68SN94CBpwEBG4XzEP",
   "7DoaqRQByWiCqARVRUj5ePD6zqMGdSGuqZbs9uDs7Ukg",
+  "9kXajyZqMTD4RijveQSNTkito4GDKDVDk49vj3yFLUTV",
 ];
 
 const EXCLUSIVE_PERIOD_DAYS = 2;
@@ -51,9 +52,10 @@ const Body: React.FC<BodyProps> = ({ sendTransaction, isWalletConnected }) => {
     }
   }, [connected, publicKey]);
 
+  const targetDate = moment("2024-06-25T18:00:00+01:00"); // 25th June 2024, 6:00 PM WAT
   const now = moment();
-  const futureDate = moment(now).add(42, 'minutes');
-  const expiryTimestamp = new Date(futureDate.toISOString());
+  const isCountdownEnded = now.isAfter(targetDate);
+  const expiryTimestamp = new Date(targetDate.toISOString());
 
   return (
     <main className="flex flex-col items-center justify-center bg-black p-4 sm:p-10 min-h-screen relative">
@@ -64,10 +66,18 @@ const Body: React.FC<BodyProps> = ({ sendTransaction, isWalletConnected }) => {
         </div>
       ) : (
         <div className="relative p-6 sm:p-10 rounded-sm shadow-lg z-10 bg-opacity-75 flex flex-col items-center justify-center">
-          <Timer expiryTimestamp={expiryTimestamp} />
-          <p className="text-xl text-white pt-5">
-            Please connect your wallet to Buy.
-          </p>
+          {!isCountdownEnded ? (
+            <>
+              <Timer expiryTimestamp={expiryTimestamp} />
+              <p className="text-xl text-white pt-5">
+                Please connect your wallet to Buy.
+              </p>
+            </>
+          ) : (
+            <p className="text-xl text-white pt-5">
+              Whitelist Presale Phase is Live!!!
+            </p>
+          )}
         </div>
       )}
       <ToastContainer />
