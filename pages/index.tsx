@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import Head from "next/head";
 import { FC, useMemo, useEffect, useState } from "react";
 import {

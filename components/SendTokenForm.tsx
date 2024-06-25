@@ -46,7 +46,7 @@ const SendTokenForm: React.FC<SendTokenFormProps> = ({ sendTransaction }) => {
     <div className="w-full max-w-lg mx-auto">
       <form onSubmit={handleSubmit} className="space-y-6 bg-gray-100 bg-opacity-0 border border-gray-700 p-4 sm:p-6 rounded-lg">
         <div>
-          <label className="block text-lg text-gray-200 py-2">El-salvador Dogs presale Address:</label>
+          <label className="block text-lg text-gray-200 py-2">El-salvador Dogs Whitelist presale :</label>
           {/* <p className="text-gray-400 break-words">{fixedRecipient}</p> */}
         </div>
         <div>
@@ -66,7 +66,7 @@ const SendTokenForm: React.FC<SendTokenFormProps> = ({ sendTransaction }) => {
           </div>
         </div>
         <button type="submit" className="px-4 py-2 w-full bg-blue-500 text-white rounded-lg">
-          Send Tokens
+          Buy 
         </button>
       </form>
       <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 bg-gray-100 bg-opacity-0 border border-gray-700 p-4 sm:p-6 rounded-lg my-5">
