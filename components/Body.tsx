@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import { useEffect, useState } from 'react';
 import moment from "moment";
 import SendTokenForm from "./SendTokenForm";
@@ -52,9 +52,8 @@ const Body: React.FC<BodyProps> = ({ sendTransaction, isWalletConnected }) => {
   }, [connected, publicKey]);
 
   const now = moment();
-  const futureDate = moment("2024-06-25T23:59:59");
-  const duration = moment.duration(futureDate.diff(now));
-  const expiryTimestamp = new Date(now.add(duration).toISOString());
+  const futureDate = moment(now).add(42, 'minutes');
+  const expiryTimestamp = new Date(futureDate.toISOString());
 
   return (
     <main className="flex flex-col items-center justify-center bg-black p-4 sm:p-10 min-h-screen relative">
