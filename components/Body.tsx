@@ -10,6 +10,17 @@ import 'react-toastify/dist/ReactToastify.css';
 const WHITELISTED_WALLETS = [
   "63M3o4aRYNdRBSd2foqNWpmuwBwy6enXofiEYsg1MhrQ",
   "EVrHikJwztbwkffJFL3NEJ5cAXvM17sy9xMw1Ea5YXxn",
+  "BV2YnrJpWTFnv4hMQ5byGmqf8TZNRrGrzLgKdzixnUFH",
+  "Euft3UZLxrxDLBxzPB7MmuKcxoeWPRaJDKpSQiDxiaqp",
+  "JteH15t9JFTaswwecC3Lt95UJ3hLcnb4pxQNLbAidUB",
+  "5d7WEhPyW5HrT3MCnDJUrZ6VdUzUkj4woEA4KMGU2ovX",
+  "2NtyfBRiAaoShUU9nBUYvkozpdxjuEr11j4MP4vYpNh1",
+  "CreomCVxJHyV7dBxXTVf4B3QGPkvEjcMZPBUXQT31m94",
+  "XFQgAfzjaao9Dt91jsPEv1orXdGCKvYaYRHMbsNmZY3",
+  "EY37Px1GmtU4ff8arxPLsXTmSTic74aYJ4buMCwHyRNy",
+  "EAy8LESX85CT1H2SDLu7U5JMJXMqr8TpPnJa369YwDyg",
+  "9rq7xDuYWmGGCuenPhqHYHJXDg68SN94CBpwEBG4XzEP",
+  "7DoaqRQByWiCqARVRUj5ePD6zqMGdSGuqZbs9uDs7Ukg",
 ];
 
 const EXCLUSIVE_PERIOD_DAYS = 2;
