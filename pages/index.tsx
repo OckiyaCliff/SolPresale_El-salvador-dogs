@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Head from "next/head";
 import { FC, useMemo, useEffect, useState } from "react";
 import {
@@ -14,11 +14,15 @@ import {
   ConnectionProvider,
 } from "@solana/wallet-adapter-react";
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
-import { PhantomWalletAdapter } from "@solana/wallet-adapter-wallets";
+import { PhantomWalletAdapter, TrustWalletAdapter } from "@solana/wallet-adapter-wallets";
+import { SolletWalletAdapter } from "@solana/wallet-adapter-sollet";
+import { SolflareWalletAdapter } from "@solana/wallet-adapter-solflare";
+import { MathWalletAdapter } from "@solana/wallet-adapter-mathwallet";
 import Header from "../components/Header";
 import Body from "../components/Body";
 
 // Use the mainnet endpoint
+// const network = "https://api.mainnet-beta.solana.com ";
 const network = "https://api.mainnet-beta.solana.com";
 
 const App: FC = () => {
@@ -81,7 +85,16 @@ const App: FC = () => {
 };
 
 const Home: FC = () => {
-  const wallets = useMemo(() => [new PhantomWalletAdapter()], []);
+  const wallets = useMemo(
+    () => [
+      new PhantomWalletAdapter(),
+      new SolletWalletAdapter(),
+      new SolflareWalletAdapter(),
+      new MathWalletAdapter(),
+      new TrustWalletAdapter()
+    ],
+    []
+  );
 
   return (
     <>
