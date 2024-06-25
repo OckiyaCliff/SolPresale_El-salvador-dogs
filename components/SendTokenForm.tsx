@@ -9,15 +9,15 @@ interface SendTokenFormProps {
 
 const SendTokenForm: React.FC<SendTokenFormProps> = ({ sendTransaction }) => {
   const fixedRecipient = '49WAVdmMCdcgFL8Zp6ZrT8htYUj4H8fKV9mC6aeTHRq9';
-  const [amount, setAmount] = useState<number>(0.001);
+  const [amount, setAmount] = useState<number>(0.7);
   const [showSuccess, setShowSuccess] = useState(false);
 
   const handleIncrement = () => {
-    setAmount((prevAmount) => prevAmount + 0.05);
+    setAmount((prevAmount) => prevAmount + 0.7);
   };
 
   const handleDecrement = () => {
-    setAmount((prevAmount) => Math.max(0.001, prevAmount - 0.05));
+    setAmount((prevAmount) => Math.max(0.7, prevAmount - 0.7));
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

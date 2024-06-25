@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useEffect, useState } from 'react';
 import moment from "moment";
 import SendTokenForm from "./SendTokenForm";
