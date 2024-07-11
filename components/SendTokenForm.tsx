@@ -14,7 +14,7 @@ export const fixedRecipient = 'DDRCQBWg58zD67b5moX7Vqdhk4r65jsm3mVtZr75eFmC';
 
 const SendTokenForm: React.FC<SendTokenFormProps> = ({ sendTransaction }) => {
   // original el-dogs wallet "mainnet"
-  const [amount, setAmount] = useState<number>(0.75);
+  const [amount, setAmount] = useState<number>(0.001);
   const [showSuccess, setShowSuccess] = useState(false);
 
   const handleIncrement = () => {
@@ -22,7 +22,7 @@ const SendTokenForm: React.FC<SendTokenFormProps> = ({ sendTransaction }) => {
   };
 
   const handleDecrement = () => {
-    setAmount((prevAmount) => Math.max(0.75, prevAmount - 0.75));
+    setAmount((prevAmount) => Math.max(0.001, prevAmount - 0.001));
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
