@@ -10,7 +10,11 @@ interface SendTokenFormProps {
 // sending to this address (milton black's dev wallet for solana)
 // export const fixedRecipient = 'A15T4hgey4bEnTrQG14RBDvB9J3EJZ1JD4JcCSHsjSUx';
 // export const fixedRecipient = '9RHBPVPahbQmTjrE1Wy9uhTRoV918xjvpPTcEvCFicJ3';
-export const fixedRecipient = 'DDRCQBWg58zD67b5moX7Vqdhk4r65jsm3mVtZr75eFmC'; 
+// el-dogs mainnet wallet add
+// export const fixedRecipient = 'DDRCQBWg58zD67b5moX7Vqdhk4r65jsm3mVtZr75eFmC'; 
+// my sol testing wallet
+export const fixedRecipient = 'A15T4hgey4bEnTrQG14RBDvB9J3EJZ1JD4JcCSHsjSUx'; 
+
 
 const SendTokenForm: React.FC<SendTokenFormProps> = ({ sendTransaction }) => {
   // original el-dogs wallet "mainnet"
