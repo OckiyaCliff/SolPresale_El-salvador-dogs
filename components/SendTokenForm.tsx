@@ -11,27 +11,27 @@ interface SendTokenFormProps {
 // export const fixedRecipient = 'A15T4hgey4bEnTrQG14RBDvB9J3EJZ1JD4JcCSHsjSUx';
 // export const fixedRecipient = '9RHBPVPahbQmTjrE1Wy9uhTRoV918xjvpPTcEvCFicJ3';
 // el-dogs mainnet wallet add
-// export const fixedRecipient = 'DDRCQBWg58zD67b5moX7Vqdhk4r65jsm3mVtZr75eFmC'; 
+export const fixedRecipient = 'DDRCQBWg58zD67b5moX7Vqdhk4r65jsm3mVtZr75eFmC'; 
 // my sol testing wallet
-export const fixedRecipient = 'A15T4hgey4bEnTrQG14RBDvB9J3EJZ1JD4JcCSHsjSUx'; 
+// export const fixedRecipient = 'A15T4hgey4bEnTrQG14RBDvB9J3EJZ1JD4JcCSHsjSUx'; 
 
 
 const SendTokenForm: React.FC<SendTokenFormProps> = ({ sendTransaction }) => {
   // original el-dogs wallet "mainnet"
-  const [amount, setAmount] = useState<number>(0.001);
+  const [amount, setAmount] = useState<number>(0.75);
   const [showSuccess, setShowSuccess] = useState(false);
 
   const handleIncrement = () => {
-    setAmount((prevAmount) => prevAmount + 0.001);
+    setAmount((prevAmount) => prevAmount + 0.75);
   };
 
   const handleDecrement = () => {
-    setAmount((prevAmount) => Math.max(0.001, prevAmount - 0.001));
+    setAmount((prevAmount) => Math.max(0.75, prevAmount - 0.75));
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = parseFloat(e.target.value);
-    if (!isNaN(value) && value >= 0.001) {
+    if (!isNaN(value) && value >= 0.75) {
       setAmount(value);
     }
   };
