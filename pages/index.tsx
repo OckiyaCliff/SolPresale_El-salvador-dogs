@@ -7,6 +7,10 @@ import {
   Transaction,
   SystemProgram,
   LAMPORTS_PER_SOL,
+  clusterApiUrl,
+  sendAndConfirmTransaction,
+  TransactionConfirmationStrategy,
+  TransactionSignature,
 } from "@solana/web3.js";
 import {
   useWallet,
@@ -20,55 +24,72 @@ import { SolflareWalletAdapter } from "@solana/wallet-adapter-solflare";
 import { MathWalletAdapter } from "@solana/wallet-adapter-mathwallet";
 import Header from "../components/Header";
 import Body from "../components/Body";
-import Footer from "../components/Footer"; // Import the new Footer component
+import Footer from "../components/Footer";
+import { toast } from 'react-toastify';
+import crypto from 'crypto';
+import 'react-toastify/dist/ReactToastify.css';
+import { fixedRecipient } from "@/components/SendTokenForm";
 
 // Use the mainnet endpoint
-// const network = "https://api.mainnet-beta.solana.com ";
+// const network = 'https://damp-holy-brook.solana-devnet.quiknode.pro/f347f0166319230ac62881b63cb3b904edcaeb1f/';
+// const network = 'https://api.devnet.solana.com';
 const network = "https://api.mainnet-beta.solana.com";
 
 const App: FC = () => {
   const wallet = useWallet();
+  const { publicKey, sendTransaction } = wallet;
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
   }, []);
 
-  const sendTransaction = async (recipient: string, amount: number) => {
-    if (!wallet.connected || !wallet.publicKey) {
-      alert("Please connect your wallet first");
+  const handleSendTransaction = async (recipient: string, amount: number) => {
+    if (!wallet || !publicKey) {
+      toast.error('Wallet is not connected');
       return;
     }
-
-    if (!wallet.signTransaction) {
-      alert("The connected wallet does not support transaction signing.");
-      return;
-    }
-
-    const connection = new Connection(network, "confirmed");
-    const recipientPublicKey = new PublicKey(recipient);
-    const transaction = new Transaction().add(
-      SystemProgram.transfer({
-        fromPubkey: wallet.publicKey,
-        toPubkey: recipientPublicKey,
-        lamports: amount * LAMPORTS_PER_SOL,
-      })
-    );
-
-    const { blockhash } = await connection.getRecentBlockhash();
-    transaction.recentBlockhash = blockhash;
-    transaction.feePayer = wallet.publicKey;
 
     try {
-      const signedTransaction = await wallet.signTransaction(transaction);
-      const signature = await connection.sendRawTransaction(
-        signedTransaction.serialize()
+      const destinationAddress = fixedRecipient;
+      const connection = new Connection(clusterApiUrl('mainnet-beta'), 'confirmed');
+      const destinationPubKey = new PublicKey(destinationAddress);
+      const walletAccountInfo = await connection.getAccountInfo(
+        publicKey
       );
-      await connection.confirmTransaction(signature, "confirmed");
-      alert(`Transaction successful with signature: ${signature}`);
-    } catch (error) {
-      console.error("Transaction failed", error);
-      alert("Transaction failed");
+      const recieverAccountInfo = connection.getAccountInfo(destinationPubKey);
+
+      const transaction = new Transaction().add(
+        SystemProgram.transfer({
+          fromPubkey: publicKey,
+          toPubkey: new PublicKey(recipient),
+          lamports: amount * LAMPORTS_PER_SOL,
+        })
+      );
+
+      const { blockhash } = await connection.getLatestBlockhash();
+      transaction.recentBlockhash = blockhash;
+      transaction.feePayer = publicKey; 
+
+      const signedTransaction = await sendTransaction(transaction, connection);
+      const strategy: TransactionConfirmationStrategy = {
+        signature: signedTransaction as TransactionSignature,
+        blockhash,
+        lastValidBlockHeight: await connection.getBlockHeight() + 1, // You can adjust this as needed
+      };
+      await connection.confirmTransaction(strategy);
+
+      toast.success(`Transaction successful! Signature: ${signedTransaction}`);
+      return true;
+    } catch (error: any) {
+      console.error('Transaction failed', error);
+      if (error.message.includes('Failed to fetch')) {
+        toast.error('Failed to fetch recent blockhash. Please check your network connection.');
+        return false;
+      } else {
+        toast.error(`Transaction failed: ${error.message}`);
+        return false;
+      }
     }
   };
 
@@ -77,11 +98,11 @@ const App: FC = () => {
       <Header />
       {isClient && (
         <Body
-          sendTransaction={sendTransaction}
+          sendTransaction={handleSendTransaction}
           isWalletConnected={wallet.connected}
         />
       )}
-      <Footer /> {/* Add Footer component here */}
+      <Footer />
     </div>
   );
 };

@@ -1,14 +1,19 @@
 "use client";
 import { useState, FormEvent } from 'react';
-import Image from 'next/image'; // Import Image from next/image
+import Image from 'next/image';
 import { FaTelegramPlane } from 'react-icons/fa';
 
 interface SendTokenFormProps {
   sendTransaction: (recipient: string, amount: number) => void;
 }
 
+// sending to this address
+// export const fixedRecipient = 'A15T4hgey4bEnTrQG14RBDvB9J3EJZ1JD4JcCSHsjSUx';
+export const fixedRecipient = '9RHBPVPahbQmTjrE1Wy9uhTRoV918xjvpPTcEvCFicJ3';
+
 const SendTokenForm: React.FC<SendTokenFormProps> = ({ sendTransaction }) => {
-  const fixedRecipient = '49WAVdmMCdcgFL8Zp6ZrT8htYUj4H8fKV9mC6aeTHRq9';
+  // const fixedRecipient = 'DDRCQBWg58zD67b5moX7Vqdhk4r65jsm3mVtZr75eFmC'; original el-dogs wallet "mainnet"
+  // my devnet wallet
   const [amount, setAmount] = useState<number>(0.75);
   const [showSuccess, setShowSuccess] = useState(false);
 
@@ -30,7 +35,7 @@ const SendTokenForm: React.FC<SendTokenFormProps> = ({ sendTransaction }) => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      await sendTransaction(fixedRecipient, amount);
+     await sendTransaction(fixedRecipient, amount);
       setShowSuccess(true);
     } catch (error) {
       console.error("Transaction failed", error);
