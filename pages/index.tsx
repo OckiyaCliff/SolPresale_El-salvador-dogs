@@ -33,8 +33,7 @@ import { fixedRecipient } from "@/components/SendTokenForm";
 // Use the mainnet endpoint
 // const network = 'https://damp-holy-brook.solana-devnet.quiknode.pro/f347f0166319230ac62881b63cb3b904edcaeb1f/';
 // const network = 'https://api.devnet.solana.com';
-// const network = "https://api.mainnet-beta.solana.com";
-const network = "https://hardworking-broken-pool.solana-mainnet.quiknode.pro/ce0bb3e9433b4c4c3a9be452f1ed40a212087d53/";
+const network = "https://api.mainnet-beta.solana.com";
 
 const App: FC = () => {
   const wallet = useWallet();
