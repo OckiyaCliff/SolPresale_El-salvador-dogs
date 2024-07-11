@@ -18,7 +18,7 @@ const SendTokenForm: React.FC<SendTokenFormProps> = ({ sendTransaction }) => {
   const [showSuccess, setShowSuccess] = useState(false);
 
   const handleIncrement = () => {
-    setAmount((prevAmount) => prevAmount + 0.75);
+    setAmount((prevAmount) => prevAmount + 0.001);
   };
 
   const handleDecrement = () => {
