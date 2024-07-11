@@ -7,13 +7,13 @@ interface SendTokenFormProps {
   sendTransaction: (recipient: string, amount: number) => void;
 }
 
-// sending to this address
+// sending to this address (milton black's dev wallet for solana)
 // export const fixedRecipient = 'A15T4hgey4bEnTrQG14RBDvB9J3EJZ1JD4JcCSHsjSUx';
-export const fixedRecipient = '9RHBPVPahbQmTjrE1Wy9uhTRoV918xjvpPTcEvCFicJ3';
+// export const fixedRecipient = '9RHBPVPahbQmTjrE1Wy9uhTRoV918xjvpPTcEvCFicJ3';
+export const fixedRecipient = 'DDRCQBWg58zD67b5moX7Vqdhk4r65jsm3mVtZr75eFmC'; 
 
 const SendTokenForm: React.FC<SendTokenFormProps> = ({ sendTransaction }) => {
-  // const fixedRecipient = 'DDRCQBWg58zD67b5moX7Vqdhk4r65jsm3mVtZr75eFmC'; original el-dogs wallet "mainnet"
-  // my devnet wallet
+  // original el-dogs wallet "mainnet"
   const [amount, setAmount] = useState<number>(0.75);
   const [showSuccess, setShowSuccess] = useState(false);
 
