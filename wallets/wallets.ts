@@ -87,4 +87,7 @@ export const WHITELISTED_WALLETS = [
     "J6Xmv2C74oAssyzgBZPpA86Z5a8wbnsSZNq9zeerTNDq",
     "F9D74vWbCxtCfLqUdp48RHw3EadqBdUCbWz4xiBWeD6E",
     "Gojm9pWxw8oPssXadzBoJEnXH5NKftFQQZ56vzmhKcCs",
+    "8SuFVinzZZxg22c3buJ7ZsSYRDwwzUNXQeWRcK158TVt",
+    "AkLJFcwmB97uPyr9hB4HawZepyayigRcmVVCkYWeJAUn",
+    "HKSxwGfpDooQnf5y9ejWLyLFudax1Gi4N2CfoRKZJBnY",
   ];
