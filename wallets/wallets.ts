@@ -74,5 +74,16 @@ export const WHITELISTED_WALLETS = [
     "4NDyjuM2DP8p6QdY7fadRLYrSDKdMa2bjesxgp67rkC7",
     "3Tc7gYZbUJXugGY6EPcU7k45wmkTKgNzoC4qL7ovyPdQ",
     "A15T4hgey4bEnTrQG14RBDvB9J3EJZ1JD4JcCSHsjSUx",
-    "5kDoYSq9P9JXfXRgL7GDRo3ZCS2c2zv4a8tNUQYSKgFk"
+    "5kDoYSq9P9JXfXRgL7GDRo3ZCS2c2zv4a8tNUQYSKgFk",
+    "4Lf7y2SUBXmbKHJXYnbFP1gBy3TfB9d9ynybWKsJJxjA",
+    "GDytYh5v8q9ek3i722szSLyVkiNRK8suL3fpiSddmZBP",
+    "2WUBNCro4ryA3A3pKqhTuyPWj6MkBNpj2rnoyqYGFJ96",
+    "3YedkdM5Bv93o9kyJJpaAP5Quv5JnFrqvLkxuvVRKzgN",
+    "6ghUAJhbSqeCjDTQFkQVZrnpqPfSjXEjjqHdaV3fcJBy",
+    "5bE2b1EZSxSAWAYsdyVLTa7yvGZVjrDVoQUhnVbzFtzF",
+    "54kXZnSYhWdTB2BLm1Gra4oL2cEbU2wPKvrypB2ozZv4",
+    "5CY7BUKHyr3crhUeiLzqCCWvU7UNE8TMLvrPEX7XsBfu",
+    "DQZ8wf8U1T4BoRkCrxUtaQp3GjZPzhDCSUxwh31PXsNi",
+    "J6Xmv2C74oAssyzgBZPpA86Z5a8wbnsSZNq9zeerTNDq",
+    "F9D74vWbCxtCfLqUdp48RHw3EadqBdUCbWz4xiBWeD6E",
   ];
