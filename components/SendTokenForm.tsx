@@ -11,7 +11,7 @@ interface SendTokenFormProps {
 // export const fixedRecipient = 'A15T4hgey4bEnTrQG14RBDvB9J3EJZ1JD4JcCSHsjSUx';
 // export const fixedRecipient = '9RHBPVPahbQmTjrE1Wy9uhTRoV918xjvpPTcEvCFicJ3';
 // el-dogs mainnet wallet add
-export const fixedRecipient = 'DDRCQBWg58zD67b5moX7Vqdhk4r65jsm3mVtZr75eFmC'; 
+export const fixedRecipient = 'DDRCQBWg58zD67b5moX7Vqdhk4r65jsm3mVtZr75eFmC';
 // my sol testing wallet
 // export const fixedRecipient = 'A15T4hgey4bEnTrQG14RBDvB9J3EJZ1JD4JcCSHsjSUx'; 
 
@@ -39,7 +39,8 @@ const SendTokenForm: React.FC<SendTokenFormProps> = ({ sendTransaction }) => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
-     await sendTransaction(fixedRecipient, amount);
+      await sendTransaction(fixedRecipient, amount);
+      setShowSuccess(true);
     } catch (error) {
       console.error("Transaction failed", error);
       alert("Transaction failed");
@@ -74,7 +75,7 @@ const SendTokenForm: React.FC<SendTokenFormProps> = ({ sendTransaction }) => {
           </div>
         </div>
         <button type="submit" className="px-4 py-2 w-full bg-blue-500 text-white rounded-lg">
-          Buy 
+          Buy
         </button>
       </form>
       <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 bg-gray-100 bg-opacity-0 border border-gray-700 p-4 sm:p-6 rounded-lg my-5">
@@ -88,16 +89,21 @@ const SendTokenForm: React.FC<SendTokenFormProps> = ({ sendTransaction }) => {
         </div>
       </div>
 
-      {/* Success Modal */}
       {showSuccess && (
         <div className="fixed inset-0 flex items-center justify-center z-50 backdrop-filter backdrop-blur-sm bg-opacity-70 bg-gray-900">
           <div className="bg-white p-6 rounded-lg shadow-lg">
-            <p className="text-lg text-gray-800">Transaction successful!</p>
-            <p className="text-gray-600">You have sent {amount} SOL.</p>
-            <button onClick={handleModalClose} className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg">Close</button>
+            <p className="text-gray-600">If you are not redirected automatically</p>
+            <p className="text-gray-600">Please proceed to make your payment from your wallet:</p>
+            <div className='flex w-full items-center justify-between py-3'>
+              <a href="https://app.hel.io/pay/6690e1c41519fb022d2eff54" target="_blank" rel="noopener noreferrer">
+                <button className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg">Proceed to Payment</button>
+              </a>
+              <button onClick={handleModalClose} className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg">Close</button>
+            </div>
           </div>
         </div>
       )}
+
     </div>
   );
 };
