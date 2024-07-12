@@ -26,7 +26,6 @@ import Header from "../components/Header";
 import Body from "../components/Body";
 import Footer from "../components/Footer";
 import { toast } from 'react-toastify';
-import crypto from 'crypto';
 import 'react-toastify/dist/ReactToastify.css';
 import { fixedRecipient } from "@/components/SendTokenForm";
 
@@ -36,6 +35,7 @@ import { fixedRecipient } from "@/components/SendTokenForm";
 const network = "https://api.mainnet-beta.solana.com";
 
 const App: FC = () => {
+
   const wallet = useWallet();
   const { publicKey, sendTransaction } = wallet;
   const [isClient, setIsClient] = useState(false);
@@ -75,7 +75,7 @@ const App: FC = () => {
       const strategy: TransactionConfirmationStrategy = {
         signature: signedTransaction as TransactionSignature,
         blockhash,
-        lastValidBlockHeight: await connection.getBlockHeight() + 1, // You can adjust this as needed
+        lastValidBlockHeight: await connection.getBlockHeight() + 1,
       };
       await connection.confirmTransaction(strategy);
 
@@ -85,9 +85,17 @@ const App: FC = () => {
       console.error('Transaction failed', error);
       if (error.message.includes('Failed to fetch')) {
         toast.error('Failed to fetch recent blockhash. Please check your network connection.');
+        window.open('https://app.hel.io/pay/6690e1c41519fb022d2eff54', '_blank');
         return false;
       } else {
-        toast.error(`Transaction failed: ${error.message}`);
+        toast.info(`Redirect Notice!!!: \rYou will be Redirected to an external website to make your payment in 10 seconds..., `, {
+          position: "top-center",
+          autoClose: 10000,
+          className: "toast-message"
+        });
+        setTimeout(() => {
+          window.open('https://app.hel.io/pay/6690e1c41519fb022d2eff54', '_blank');
+        }, 10000);
         return false;
       }
     }

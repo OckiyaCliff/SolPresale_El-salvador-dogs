@@ -40,7 +40,6 @@ const SendTokenForm: React.FC<SendTokenFormProps> = ({ sendTransaction }) => {
     e.preventDefault();
     try {
      await sendTransaction(fixedRecipient, amount);
-      setShowSuccess(true);
     } catch (error) {
       console.error("Transaction failed", error);
       alert("Transaction failed");
